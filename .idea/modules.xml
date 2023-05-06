@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Spring-lkj/Spring-lkj.iml" filepath="$PROJECT_DIR$/Spring-lkj/Spring-lkj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring-lkj-02/Spring-lkj-02.iml" filepath="$PROJECT_DIR$/Spring-lkj-02/Spring-lkj-02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring-lkj-03-Aware/Spring-lkj-03-aware.iml" filepath="$PROJECT_DIR$/Spring-lkj-03-Aware/Spring-lkj-03-aware.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring-lkj-04-beanPostProcessor/Spring-lkj-04-beanPostProcessor.iml" filepath="$PROJECT_DIR$/Spring-lkj-04-beanPostProcessor/Spring-lkj-04-beanPostProcessor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring-lkj-05-aop/Spring-lkj-05-aop.iml" filepath="$PROJECT_DIR$/Spring-lkj-05-aop/Spring-lkj-05-aop.iml" />
+    </modules>
+  </component>
+</project>

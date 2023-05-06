@@ -1,0 +1,63 @@
+第一部分 通过beanName获取bean，加入singleton、prototype
+
+1.建立一个java的module （不是maven）
+
+2.com.aaa.Test ，观察Test类，
+
+- 发现需要ApplicationContext类，提供getBean方法
+- 需要AppConfig类，指定具体扫描包
+  - 需要注解@ComponentScan
+- 需要UserService类，及其子类
+  - 也就需要@Component
+
+3.具体操作
+    ApplicationContext类，初始化的时候，应该读取需要扫描的类，然后加载对应的bean放到map中
+    3.1 构造器 public ApplicationContext(Class configClass)
+        3.1.1 beanDefinitionMap赋值
+            ① scanBeanDefinition(Class configClass)
+            获取配置类的class，得到注解@ComponentScan中对应的值path 进而得到file；
+                ComponentScan componentScanAnnotation = (ComponentScan) configClass.getDeclaredAnnotation(ComponentScan.class);
+                String path = componentScanAnnotation.value();  // com.aaa.service
+                path = path.replace(".", "/");
+
+            ② readFile(File file)
+            遍历file（文件 + 文件夹）找到所有的class类
+
+
+            ③ injectBeanDefinitionMap(File f)
+            如果得到的class类，有@component---也就是bean，
+                根据单例、多例，lazy等等，赋值beanDefinitionMap【Map<String, BeanDefinition>】
+
+
+
+        3.1.2 singletonObjects单例池---map【Map<String, Object>】赋值
+            遍历beanDefinitionMap，找到所有的单例bean，赋值到singleonObjects中
+
+    3.2 Object getBean(String beanName)
+        先确定是单例，还是多例；
+            单例直接从singletonObjects单例池中获取
+            多例使用createBean
+
+            Object createBean(BeanDefinition beanDefinition) 通过beanDefinition的class对象，创建bean
+
+第二部分 依赖注入
+    按道理应在createBean中创建对象的时候，为属性赋值；但是，此时可能有的属性对应的对象，单例池中还没有；
+    应该是遍历该对象的所有属性，然后依次赋值；但属性---对象可能没有赋值，里面的属性也可能没有赋值；
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

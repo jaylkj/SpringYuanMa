@@ -1,0 +1,206 @@
+package com.spring;
+
+import com.aaa.AppConfig;
+import com.spring.anno.Component;
+import com.spring.anno.ComponentScan;
+import com.spring.anno.Scope;
+import javafx.application.Application;
+
+import java.io.File;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class ApplicationContext {
+    private Class configClass;
+
+    /**
+     * 两个map，不是浪费内存？ 为什么不是一个map---单例，一个set/map只记录多例呢【这里另一个map，单例、多例都有？】；
+     * singletonObjects 里面存储的是对象；
+     * beanDefinitionMap 里面存储的是beanDefinition
+     *
+     */
+    // 单例bean都在这里
+    private Map<String, Object> singletonObjects = new ConcurrentHashMap<>();  // 单例池
+
+    // Bean 都在这里
+    private Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
+
+    public ApplicationContext(Class configClass) {
+        this.configClass = configClass;
+
+        // 注入到map中
+            // 用户创建对象的时候，我们应该扫描注解中的包，创建对象，依赖注入到map中；
+        this.scanBeanDefinition(configClass);
+
+        // 注入到单例池中
+        for (Map.Entry<String, BeanDefinition> entry: beanDefinitionMap.entrySet()) {
+            BeanDefinition beanDefinition = entry.getValue();
+            if (beanDefinition.getScope().equals("singleton")) {
+                // 放入单例池中
+                String beanName = entry.getKey();
+                Object bean = createBean(beanDefinition);  // 这里创建了单例bean
+                singletonObjects.put(beanName, bean);
+            }
+        }
+
+    }
+
+    private void scanBeanDefinition(Class configClass) {
+        // 1.获取需要扫描的包名
+            // 读取configClass对应的注解中的值---获取包名；  【为什么需要强转】
+        ComponentScan componentScanAnnotation = (ComponentScan) configClass.getDeclaredAnnotation(ComponentScan.class);
+        String path = componentScanAnnotation.value();  // com.aaa.service
+        path = path.replace(".", "/");
+        System.out.println(path);
+
+        // 2.扫描
+        // 2.1 通过包名 得到file（文件、文件夹）
+            // 获取类加载器 根据上面扫描的路径，得到file
+        ClassLoader classLoader = ApplicationContext.class.getClassLoader();
+        URL resource = classLoader.getResource(path);  // 相对路径，相对于classpath
+        File file = new File(resource.getFile());
+//        System.out.println(file);
+
+        // 2.2 遍历file
+        this.readFile(file);
+    }
+    /**
+     * 类加载器
+     * Bootstrap --- jre/lib
+     * Ext --- jre/ext/lib
+     * App --- classpath  "F:\NewMavenProject\SpringYuanMa\out\production\Spring-lkj"
+     *
+     * -classpath
+     *  "F:\NewMavenProject\SpringYuanMa\out\production\Spring-lkj" com.aaa.Test
+     *
+     */
+    /**
+     * file --- 文件、文件夹 的一个集合
+     * 思想，每次遍历file，如果是文件夹，则递归；否则继续遍历；
+     * @param file
+     */
+    private void readFile(File file) {
+        File[] files = file.listFiles();
+        for (File f: files) {
+            // 如果是文件夹 递归
+            if (f.isDirectory()) {
+                this.readFile(f);
+            } else {
+//                System.out.println(f);
+                // 具体操作 注入map中
+                injectBeanDefinitionMap(f);
+            }
+        }
+    }
+
+    /**
+     * 向beanDefinitionMap中设置值
+     * @param f
+     */
+    private void injectBeanDefinitionMap(File f) {
+        // 1.得到class名称
+        // F:\NewMavenProject\SpringYuanMa\out\production\Spring-lkj\com\aaa\service\UserService.class
+        String fileName = f.getAbsolutePath();
+        String className = fileName.substring(fileName.indexOf("com"), fileName.indexOf(".class"));
+        className = className.replace("\\", ".");
+
+        // 2.如果class对象 中有我们需要的Component.class注解，则操作
+        ClassLoader classLoader = ApplicationContext.class.getClassLoader();
+        try {
+            Class<?> clazz = classLoader.loadClass(className);
+            if (clazz.isInterface()) {  // 因为接口，我们不需要注入
+//                continue;  // 之前在方法中，是continue；使用return 会跳出方法readFile
+                return ;  // 现在封装成了函数，就不会跳出readFile方法了
+            }
+
+            /**
+             * 具体操作：
+             * 1.有component.class
+             * 2.是单例模式
+             * 3.多例模式
+             * 4.lazy加载？
+             *
+             */
+            // 2.1 有component.class 说明一个bean
+            if (clazz.isAnnotationPresent(Component.class)) {
+                // 得到注解的value
+                /**
+                 * @Controller 名称eg：helloController 【自己指定、或者默认---小驼峰】
+                 * 这里就用自己指定  【这里注意】
+                 */
+                Component componentAnnotation = clazz.getDeclaredAnnotation(Component.class);
+                String beanName = componentAnnotation.value();
+
+                // 2.2判断是单例还是多例
+                BeanDefinition beanDefinition = new BeanDefinition();
+                beanDefinition.setClazz(clazz);
+                // 有，查看值
+                if (clazz.isAnnotationPresent(Scope.class)) {
+                    Scope scopeAnnotation = clazz.getDeclaredAnnotation(Scope.class);
+                    // scope没有写，应该也是单例
+                    beanDefinition.setScope(scopeAnnotation.value());
+                } else {
+                    // 默认是单例
+                    beanDefinition.setScope("singleton");
+                }
+
+                // 只要是bean，就放入；
+                beanDefinitionMap.put(beanName, beanDefinition);  // clazz 、 scope
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 对外提供的
+     * @param beanName
+     * @return
+     */
+    public Object getBean(String beanName) {
+        // 有无此bean
+        if (beanDefinitionMap.containsKey(beanName)) {
+            // 判断是单例 还是多例
+            BeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
+                // scope没有写，应该也是单例 【我在上面放入beanDefinitionMap 做了处理】
+            if (beanDefinition.getScope().equals("singleton")) {
+                // 单例，从池中获取
+                return singletonObjects.get(beanName);
+            } else {
+                // 多例， 创建
+                return createBean(beanDefinition);  // 注意不是根据beanName创建 ，而是根据clazz创建
+            }
+        } else {
+            // 没有此bean
+            throw new NullPointerException();
+        }
+    }
+
+    /**
+     * 单例---ApplicationContext构造器的时候，调用；
+     * 多例---getBean的时候，都会调用的方法
+     * @return
+     */
+    private Object createBean(BeanDefinition beanDefinition) {
+        Class clazz = beanDefinition.getClazz();
+
+        Object o = null;
+        try {
+            o = clazz.getConstructor().newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        return o;
+    }
+}

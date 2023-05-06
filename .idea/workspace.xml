@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="89dfba45-d31a-40d6-bd61-9cf8807b7051" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="2OumcRNjDGwfgG889GbLwZOecCu" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../small-spring-main" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15625" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.spring.anno" />
+      <recent name="com.aaa.dao" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\NewMavenProject\SpringYuanMa" />
+      <recent name="F:\NewMavenProject\SpringYuanMa\Spring-lkj-03-Aware" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Test (4)">
+    <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.aaa.Test" />
+      <module name="Spring-lkj-02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.aaa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.aaa.Test" />
+      <module name="Spring-lkj-03-aware" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.aaa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.aaa.Test" />
+      <module name="Spring-lkj-04-beanPostProcessor" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.aaa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.aaa.Test" />
+      <module name="Spring-lkj-05-aop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.aaa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.aaa.Test" />
+      <module name="Spring-lkj" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.aaa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test (4)" />
+        <item itemvalue="Application.Test (3)" />
+        <item itemvalue="Application.Test (2)" />
+        <item itemvalue="Application.Test (1)" />
+        <item itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="89dfba45-d31a-40d6-bd61-9cf8807b7051" name="Default Changelist" comment="" />
+      <created>1682418919166</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682418919166</updated>
+      <workItem from="1682418922160" duration="2202000" />
+      <workItem from="1682488263437" duration="17151000" />
+      <workItem from="1683292282598" duration="2224000" />
+      <workItem from="1683354072734" duration="13994000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="261" y="0" width="1206" height="824" key="#Project_Structure" timestamp="1682419619699">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="261" y="0" width="1206" height="824" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1682419619699" />
+    <state x="0" y="43" key="#com.intellij.ide.util.MemberChooser" timestamp="1683362638467">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="0" y="43" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1683362638467" />
+    <state x="562" y="67" key="DetectedRootsChooserDialog" timestamp="1682419541397">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="562" y="67" key="DetectedRootsChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1682419541397" />
+    <state x="407" y="75" key="FileChooserDialogImpl" timestamp="1683372345266">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="407" y="75" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1683372345266" />
+    <state width="1162" height="45" key="GridCell.Tab.0.bottom" timestamp="1683370454854">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1162" height="45" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1683370454854" />
+    <state width="1162" height="45" key="GridCell.Tab.0.center" timestamp="1683370454853">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1162" height="45" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1683370454853" />
+    <state width="1162" height="45" key="GridCell.Tab.0.left" timestamp="1683370454853">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1162" height="45" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1683370454853" />
+    <state width="1162" height="45" key="GridCell.Tab.0.right" timestamp="1683370454854">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1162" height="45" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1683370454854" />
+    <state width="1483" height="247" key="GridCell.Tab.1.bottom" timestamp="1682517279435">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1483" height="247" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1682517279435" />
+    <state width="1483" height="247" key="GridCell.Tab.1.center" timestamp="1682517279434">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1483" height="247" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1682517279434" />
+    <state width="1483" height="247" key="GridCell.Tab.1.left" timestamp="1682517279434">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1483" height="247" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1682517279434" />
+    <state width="1483" height="247" key="GridCell.Tab.1.right" timestamp="1682517279434">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1483" height="247" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1682517279434" />
+    <state x="347" y="43" key="NewModule_or_Project.wizard" timestamp="1683361979983">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="347" y="43" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1683361979983" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1683370076759">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="121" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1683370076759" />
+    <state x="0" y="82" key="new project wizard" timestamp="1682498443108">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="0" y="82" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1682498443108" />
+    <state x="347" y="0" width="840" height="822" key="search.everywhere.popup" timestamp="1683362343135">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="347" y="0" width="840" height="822" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1683362343135" />
+    <state x="489" y="310" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1682420053782">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="489" y="310" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1536.824@0.0.1536.824" timestamp="1682420053782" />
+  </component>
+</project>
